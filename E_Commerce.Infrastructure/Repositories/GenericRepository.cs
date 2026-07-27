@@ -19,10 +19,10 @@ namespace E_Commerce.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken ct = default)
             =>await _dbContext.Set<TEntity>().ToListAsync();
 
-        public async Task<TEntity?> GetByIdAsync(Tkey id)
+        public async Task<TEntity?> GetByIdAsync(Tkey id , CancellationToken ct = default)
             => await _dbContext.Set<TEntity>().FindAsync(id);
 
         public void Add(TEntity entity) => _dbContext.Set<TEntity>().Add(entity);
