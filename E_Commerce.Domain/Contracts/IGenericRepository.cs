@@ -17,6 +17,8 @@ namespace E_Commerce.Domain.Contracts
         Task<IEnumerable<TEntity>> GetAllAsync(ISpecification<TEntity , Tkey> Spec , CancellationToken ct = default);
         Task<IEnumerable<TEntity>> GetAllAsync( CancellationToken ct = default);
 
+        Task<int> CountAsync(ISpecification<TEntity, Tkey> Spec, CancellationToken ct); 
+
 
     }
 }

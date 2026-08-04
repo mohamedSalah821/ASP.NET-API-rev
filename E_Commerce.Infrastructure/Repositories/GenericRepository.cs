@@ -41,5 +41,10 @@ namespace E_Commerce.Infrastructure.Repositories
 
         public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken ct = default)
         =>await _dbContext.Set<TEntity>().ToListAsync(ct);
+
+        public async Task<int> CountAsync(ISpecification<TEntity, Tkey> Spec, CancellationToken ct)
+        {
+            return await SpecificationEvaluator.CreateQuery(_dbContext.Set<TEntity>() , Spec).CountAsync(ct) ;
+        }
     }
 }
